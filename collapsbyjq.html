@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>           
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Collapse By JQ</title>
+    <style>
+        body{
+            position: relative;
+        }
+        #mycoll{
+            margin-top: 10%;
+            margin-left: 20%;
+            border: 1px solid rgb(184, 183, 183);
+            width: 60%;
+        }
+        .col{
+            font-size: 30px;
+            color: rgb(46, 45, 45);
+            background-color: white;
+            box-shadow: 2px 2px;
+            border-radius: 5px;
+            width: 100%;
+            height: 50px;
+        }
+        .col i{
+            margin-left: 60%;
+        }
+        .col i:last-of-type{
+            display: none;
+        }
+        .hidcollaps{
+            border-radius: 5px;
+            display:none ;
+          
+            width: 100%;
+            padding: 10px 20px;
+            color: rgb(46, 45, 45);
+            border: 1px solid rgb(46, 45, 45);
+            align-content: center;
+        }
+        .actbtn{
+            background-color: rgb(5, 231, 145);
+        }
+      
+    </style>
+</head>
+<body>
+    <div id="mycoll">
+        <button id="colps" class="col">
+            According Item#1 <i class="fal fa-angle-down"></i>
+            <i class="fal fa-angle-up"></i>
+        </button>
+        <div id="hidcollaps1" class="hidcollaps">
+                <p><b>This is the first item's accordion body. </b>
+                     It is shown by default, until the collapse plugin adds the appropriate
+                      classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.</p>
+    
+        </div>
+        <button id="colps2" class="col">
+                According Item#2 <i class="fal fa-angle-down"></i><i class="fal fa-angle-up"></i>
+        </button>
+        <div id="hidcollaps2" class="hidcollaps">
+                <p><b>This is the second item's accordion body. </b>
+                           It is shown by default, until the collapse plugin adds the appropriate
+                            classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.</p>
+        </div>
+        <button id="colps3" class="col">
+                According Item#3<i class="fal fa-angle-down"></i><i class="fal fa-angle-up"></i>
+        </button>
+      <div id="hidcollaps3" class="hidcollaps" >
+        <p><b>This is the third item's accordion body. </b>
+                 It is shown by default, until the collapse plugin adds the appropriate
+                  classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.</p> 
+    </div>
+
+    </div>
+    <script >
+        $(document).ready(function(){
+            var allcoll =Array.from($(".col")) ;//الزراير
+            var all=Array.from($(".hidcollaps"));//النص
+            var allI=Array.from($("i"));
+            allcoll.forEach((c)=>{
+                $(c).click(function(){
+                    all.forEach((txt)=>{
+                        $(allcoll[all.indexOf(txt)]).removeClass("actbtn");
+                        if(all.indexOf(txt) !=allcoll.indexOf(c)){
+                            $(all[all.indexOf(txt)]).slideUp(1000);
+                            }
+                    })
+                    $(allcoll[allcoll.indexOf(c)]).addClass("actbtn");  
+                    $(allI[allcoll.indexOf(c)*2]).toggle();  
+                    $(allI[(allcoll.indexOf(c)*2+1)]).toggle();
+                    $(all[allcoll.indexOf(c)]).slideToggle(1000);
+                });
+            })
+        })
+    </script>
+</body>
+</html>
